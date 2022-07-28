@@ -1,3 +1,4 @@
+import { Button, FormControl, Input, InputLabel } from "@mui/material";
 import { useState } from "react";
 import "./App.css";
 
@@ -20,10 +21,19 @@ function App() {
       <h1>Hello World!</h1>
 
       <form>
-        <input value={input} onChange={(e) => setInput(e.target.value)} />
-        <button type="submit" onClick={sendMessage}>
-          Send Message
-        </button>
+        <FormControl>
+          <InputLabel>Email address</InputLabel>
+          <Input value={input} onChange={(e) => setInput(e.target.value)} />
+          <Button
+            disabled={!input}
+            variant="contained"
+            color="primary"
+            type="submit"
+            onClick={sendMessage}
+          >
+            Send Message
+          </Button>
+        </FormControl>
       </form>
 
       {/* messages themselves */}
