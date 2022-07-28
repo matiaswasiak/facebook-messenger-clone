@@ -1,6 +1,7 @@
 import { Button, FormControl, Input, InputLabel } from "@mui/material";
 import { useState } from "react";
 import "./App.css";
+import Message from "./Message";
 
 function App() {
   const [input, setInput] = useState("");
@@ -39,7 +40,9 @@ function App() {
       {/* messages themselves */}
 
       {messages.map((message) => (
-        <p>{message}</p>
+        <>
+          <Message text={message} />
+        </>
       ))}
     </div>
   );
