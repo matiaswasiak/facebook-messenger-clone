@@ -10,6 +10,7 @@ function App() {
 
   const sendMessage = (e) => {
     // all the logic to send a message goes
+    e.preventDefault();
     setMessages([...messages, input]);
     setInput("");
   };
@@ -20,7 +21,9 @@ function App() {
 
       <form>
         <input value={input} onChange={(e) => setInput(e.target.value)} />
-        <button onClick={sendMessage}>Send Message</button>
+        <button type="submit" onClick={sendMessage}>
+          Send Message
+        </button>
       </form>
 
       {/* messages themselves */}
