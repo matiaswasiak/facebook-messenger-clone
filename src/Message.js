@@ -1,10 +1,12 @@
+import { Card, CardContent, Typography } from "@mui/material";
 import React from "react";
+import "./Message.css";
 
-const Message = (props) => {
+const Message = ({ username, text }) => {
   return (
-    <div>
-      <h2>{props.text}</h2>
-    </div>
+    <Card className="message__card" variant="h5" component="h2">
+      {username}: {text}
+    </Card>
   );
 };
 
