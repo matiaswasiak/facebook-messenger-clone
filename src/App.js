@@ -1,19 +1,23 @@
 import { Button, FormControl, Input, InputLabel } from "@mui/material";
 import { useEffect, useState } from "react";
 import "./App.css";
+import { db } from "./firebase";
 import Message from "./Message";
 
 function App() {
   const [input, setInput] = useState("");
-  const [messages, setMessages] = useState([
-    { username: "matias", text: "hey guys" },
-    { username: "aldo", text: "hey boys" },
-    { username: "agus", text: "hey bros" },
-  ]);
+  const [messages, setMessages] = useState([]);
   const [username, setUsername] = useState("");
 
   // useState = variable in React
   // useEffect = run code on a condition in React
+
+  useEffect(() => {
+    // run once when the app component loads
+    db.collection("messages").onSnapshot((snapshot) => {
+      setMessages(snapshot.docs.map((doc) => doc.data()));
+    });
+  }, []);
 
   useEffect(() => {
     // run code here...
