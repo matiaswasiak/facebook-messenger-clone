@@ -2,11 +2,19 @@ import { Card, CardContent, Typography } from "@mui/material";
 import React from "react";
 import "./Message.css";
 
-const Message = ({ username, text }) => {
+const Message = ({ username, message }) => {
+  const isUser = username === message.username;
+
   return (
-    <Card className="message__card" variant="h5" component="h2">
-      {username}: {text}
-    </Card>
+    <div className={`message  ${isUser && "message__user"}`}>
+      <Card className={isUser ? "message__userCard" : "message__guestCard"}>
+        <CardContent>
+          <Typography variant="h5" component="h2">
+            {message.username}: {message.text}
+          </Typography>
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 
