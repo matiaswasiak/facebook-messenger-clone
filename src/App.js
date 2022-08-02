@@ -30,6 +30,7 @@ function App() {
   const sendMessage = (e) => {
     // all the logic to send a message goes
     e.preventDefault();
+
     setMessages([...messages, { username: username, text: input }]);
     setInput("");
   };
